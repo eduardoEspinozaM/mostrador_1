@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1> Marcas</h1>
+
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th colspan=""></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @marcas.each do |marca| %>
+      <tr>
+        <td><%= marca.nombre %></td>
+        <td class="btn-group"><%= link_to glyph(:eye_open) + 'Ver', marca, class: 'btn btn-primary btn-sm' %>
+          <%= link_to glyph(:edit) + 'Editar', edit_marca_path(marca), class: 'btn btn-warning btn-sm' %>
+          <%= link_to glyph(:trash) +'Borrar', marca, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Marca', new_marca_path %>
