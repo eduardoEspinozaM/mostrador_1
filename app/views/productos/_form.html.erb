@@ -27,10 +27,12 @@
     <%= f.label :descripcion %><br>
     <%= f.text_field :descripcion %>
   </div>
-  <div class="field">
-    <%= f.label :imagen %><br>
-    <%= f.text_field :imagen %>
-  </div>
+    <div class="thumbnail">
+      <%= f.label :nombre %><br>
+      <%= f.text_field :nombre %>
+      <%= f.file_field :imagen %>
+
+    </div>
   <div class="field">
     <%= f.label :precio %><br>
     <%= f.number_field :precio %>

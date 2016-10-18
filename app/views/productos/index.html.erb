@@ -2,7 +2,8 @@
 
 <h1>Productos</h1>
 
-<table class="table table-striped table-hover ">
+<table class="table table-striped table-hover ",class="panel panel-primary">
+  <div class="panel panel-primary">
   <thead>
     <tr>
       <th>  Marca</th>
@@ -13,7 +14,8 @@
       <th>  Precio</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </div>
+  </>
 
   <tbody>
     <% @productos.each do |producto| %>
@@ -22,7 +24,7 @@
         <td><%= producto.categoria_id %></td>
         <td><%= producto.nombre %></td>
         <td><%= producto.descripcion %></td>
-        <td><%= producto.imagen %></td>
+        <td><%= image_tag producto.imagen, height: 80  %></td>
         <td><%= producto.precio %></td>
 
 
