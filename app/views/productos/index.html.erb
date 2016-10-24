@@ -5,11 +5,11 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
+      <th>  Imagen </th>
       <th>  Marca</th>
       <th>  Categoria</th>
       <th>  Nombre</th>
       <th>  Descripcion</th>
-      <th>  Imagen</th>
       <th>  Precio</th>
       <th colspan="3"></th>
     </tr>
@@ -18,18 +18,18 @@
   <tbody>
     <% @productos.each do |producto| %>
       <tr>
+        <td><%= image_tag(producto.imagen)  %></td><class: 'btn btn-danger '>
         <td><%= producto.marca_id %></td>
         <td><%= producto.categoria_id %></td>
         <td><%= producto.nombre %></td>
         <td><%= producto.descripcion %></td>
-        <td><%= image_tag(producto.imagen)  %></td>
         <td><%= producto.precio %></td>
 
 
 
         <td class="btn-group"><%= link_to glyph(:eye_open) + ' Ver', producto, class: 'btn btn-primary btn-large' %>
           <%= link_to glyph(:edit) + ' Editar', edit_producto_path(producto), class: 'btn btn-success' %>
-          <%= link_to glyph(:trash) +' Borrar', producto, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to glyph(:trash) +' Borrar', producto, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger ' %>
         </td>
     <% end %>
   </tbody>
