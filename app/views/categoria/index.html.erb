@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+categoriacategoria<p id="notice"><%= notice %></p>
 
 <h1>Listing Categoria</h1>
 
@@ -11,12 +11,12 @@
   </thead>
 
   <tbody>
-    <% @categoria.each do |categorium| %>
+    <% @categoria.each do |categoria| %>
       <tr>
-        <td><%= categorium.nombre %></td>
-        <td><%= link_to 'Show', categorium %></td>
-        <td><%= link_to 'Edit', edit_categorium_path(categorium) %></td>
-        <td><%= link_to 'Destroy', categorium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= categoria.nombre %></td>
+        <td><%= link_to 'Show', categoriacategoria %></td>
+        <td><%= link_to 'Edit', edit_categoria_path(categoria) %></td>
+        <td><%= link_to 'Destroy', categoria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Categorium', new_categorium_path %>
+<%= link_to 'Nueva categoria', new_categoria_path %>

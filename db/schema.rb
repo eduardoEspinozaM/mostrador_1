@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016211946) do
+ActiveRecord::Schema.define(version: 20161025222906) do
 
   create_table "carritos", force: :cascade do |t|
     t.integer  "cliente_id"

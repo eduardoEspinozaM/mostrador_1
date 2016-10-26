@@ -1,10 +1,10 @@
 class CategoriaController < ApplicationController
-  before_action :set_categorium, only: [:show, :edit, :update, :destroy]
+  before_action :set_categoria, only: [:show, :edit, :update, :destroy]
 
   # GET /categoria
   # GET /categoria.json
   def index
-    @categoria = Categorium.all
+    @categoria = Categoria.all
   end
 
   # GET /categoria/1
@@ -14,7 +14,7 @@ class CategoriaController < ApplicationController
 
   # GET /categoria/new
   def new
-    @categorium = Categorium.new
+    @categoria = Categoria.new
   end
 
   # GET /categoria/1/edit
@@ -24,12 +24,12 @@ class CategoriaController < ApplicationController
   # POST /categoria
   # POST /categoria.json
   def create
-    @categorium = Categorium.new(categorium_params)
+    @categoria = Categoria.new(categorium_params)
 
     respond_to do |format|
       if @categorium.save
         format.html { redirect_to @categorium, notice: 'Categorium was successfully created.' }
-        format.json { render :show, status: :created, location: @categorium }
+        format.json { render :show, status: :created, location: @categoria }
       else
         format.html { render :new }
         format.json { render json: @categorium.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class CategoriaController < ApplicationController
   def update
     respond_to do |format|
       if @categorium.update(categorium_params)
-        format.html { redirect_to @categorium, notice: 'Categorium was successfully updated.' }
-        format.json { render :show, status: :ok, location: @categorium }
+        format.html { redirect_to @categoria, notice: 'Categorium was successfully updated.' }
+        format.json { render :show, status: :ok, location: @categoria }
       else
         format.html { render :edit }
         format.json { render json: @categorium.errors, status: :unprocessable_entity }

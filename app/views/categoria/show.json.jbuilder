@@ -1,1 +1,1 @@
-json.partial! "categoria/categorium", categorium: @categorium
+json.partial! "categoria/categoria", categoria: @categoria

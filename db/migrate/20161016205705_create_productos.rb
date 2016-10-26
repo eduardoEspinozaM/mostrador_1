@@ -5,7 +5,6 @@ class CreateProductos < ActiveRecord::Migration
       t.integer :categoria_id
       t.string :nombre
       t.string :descripcion
-      t.string :imagen
       t.integer :precio
 
       t.timestamps null: false

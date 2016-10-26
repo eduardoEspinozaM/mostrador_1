@@ -20,9 +20,17 @@
   <tbody>
     <% @productos.each do |producto| %>
       <tr>
-        <td><%= image_tag(producto.imagen)  %></td><class: 'btn btn-danger '>
-        <td><%= producto.marca_id %></td>
-        <td><%= producto.categoria_id %></td>
+        <td><%= image_tag producto.imagen, class: "" %></td>
+        <td>
+          <% if producto.marca %>
+              <%= producto.marca.nombre %>
+          <%end%>
+       </td>
+        <td>
+            <% if producto.categoria %>
+                <%= producto.categoria.nombre %>
+            <%end%>
+        </td>
         <td><%= producto.nombre %></td>
         <td><%= producto.descripcion %></td>
         <td><%= producto.precio %></td>
@@ -39,4 +47,4 @@
 
 <br>
 
-<%= link_to 'New Producto', new_producto_path,  class: 'glyphicon glyphicon-shopping-cart '  %>
+<%= link_to 'Nuevo Producto', new_producto_path,  class: 'glyphicon glyphicon-shopping-cart '  %>

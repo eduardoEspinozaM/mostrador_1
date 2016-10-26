@@ -14,10 +14,10 @@
   
   <div class="form-group has-error">
     <%= f.label :marca_id %><br>
-    <%= f.number_field :marca_id %>
+    <%= f.text_field :marca_id %>
   </div>
   <div class="field">
-    <%= f.label :categoria_id %><br>
+    <%= f.label :categoria %><br>
     <%= f.number_field :categoria_id %>
   </div>
   <div class="field">
@@ -28,11 +28,8 @@
     <%= f.label :descripcion %><br>
     <%= f.text_field :descripcion %>
   </div>
-    <div class="thumbnail">
-      <%= f.label :nombre %><br>
-      <%= f.text_field :nombre %>
+    <div class="field">
       <%= f.file_field :imagen %>
-
     </div>
   <div class="field">
     <%= f.label :precio %><br>

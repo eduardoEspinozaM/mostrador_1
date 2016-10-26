@@ -24,7 +24,7 @@ gem 'devise'
 gem 'nested_form_fields'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+
 
 
 # Use ActiveModel has_secure_password
@@ -48,3 +48,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+source 'http://rubygems.org'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'autoprefixer-rails'
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+
