@@ -1,74 +1,77 @@
-class CategoriaController < ApplicationController
+class CategoriasController < ApplicationController
   before_action :set_categoria, only: [:show, :edit, :update, :destroy]
 
-  # GET /categoria
-  # GET /categoria.json
+  # GET /categorias
+  # GET /categorias.json
   def index
-    @categoria = Categoria.all
+    @categorias = Categoria.all
   end
 
-  # GET /categoria/1
-  # GET /categoria/1.json
+  # GET /categorias/1
+  # GET /categorias/1.json
   def show
   end
 
-  # GET /categoria/new
+  # GET /categorias/new
   def new
     @categoria = Categoria.new
   end
 
-  # GET /categoria/1/edit
+  # GET /categorias/1/edit
   def edit
   end
 
-  # POST /categoria
-  # POST /categoria.json
+  # POST /categorias
+  # POST /categorias.json
   def create
-    @categoria = Categoria.new(categorium_params)
+    @categoria = Categoria.new(categoria_params)
 
     respond_to do |format|
-      if @categorium.save
-        format.html { redirect_to @categorium, notice: 'Categorium was successfully created.' }
+      if @categoria.save
+        format.html { redirect_to categorias_url, notice: 'Nueva Categoria creada' }
+        #format.html { redirect_to @categoria, notice: 'Categoria was successfully created.' }
         format.json { render :show, status: :created, location: @categoria }
       else
         format.html { render :new }
-        format.json { render json: @categorium.errors, status: :unprocessable_entity }
+        format.json { render json: @categoria.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /categoria/1
-  # PATCH/PUT /categoria/1.json
+  # PATCH/PUT /categorias/1
+  # PATCH/PUT /categorias/1.json
   def update
     respond_to do |format|
-      if @categorium.update(categorium_params)
-        format.html { redirect_to @categoria, notice: 'Categorium was successfully updated.' }
+      if @categoria.update(categoria_params)
+        format.html { redirect_to categorias_url, notice: 'Categoria Actualizada!' }
+        #format.html { redirect_to @categoria, notice: 'Categoria was successfully updated.' }
         format.json { render :show, status: :ok, location: @categoria }
       else
         format.html { render :edit }
-        format.json { render json: @categorium.errors, status: :unprocessable_entity }
+        format.json { render json: @categoria.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /categoria/1
-  # DELETE /categoria/1.json
+  # DELETE /categorias/1
+  # DELETE /categorias/1.json
   def destroy
-    @categorium.destroy
+    @categoria.destroy
     respond_to do |format|
-      format.html { redirect_to categoria_url, notice: 'Categorium was successfully destroyed.' }
+      format.html { redirect_to categorias_url, notice: 'Categoria was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_categorium
-      @categorium = Categorium.find(params[:id])
+    def set_categoria
+      @categoria = Categoria.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def categorium_params
-      params.require(:categorium).permit(:nombre)
+    def categoria_params
+      params.require(:categoria).permit(:nombre)
+
     end
 end
