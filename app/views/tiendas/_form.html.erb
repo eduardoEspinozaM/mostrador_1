@@ -1,0 +1,17 @@
+%= form_for(@tienda) do |f| %>
+  <% if @tienda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tienda.errors.count, "error") %> prohibited this tienda from being saved:</h2>
+
+      <ul>
+      <% @tienda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

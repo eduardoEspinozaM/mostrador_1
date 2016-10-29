@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tiendas
   resources :detalles
   resources :productos
   resources :carritos
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'carritos#index'
+   root 'tiendas#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

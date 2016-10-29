@@ -2,7 +2,8 @@
 
 <h1>Productos</h1>
 <td class="btn-group-vertical">
-<table class="table table-striped table-hover ">
+  <table class="table table-striped table-hover ",class="panel panel-primary">
+  <div class="panel panel-primary">
   <thead>
     <tr>
       <th>  Imagen </th>
@@ -16,11 +17,12 @@
 </td>
   </thead>
 </div>
-<div class="col-sm-">
   <tbody>
+    
     <% @productos.each do |producto| %>
       <tr>
-        <td><%= image_tag producto.imagen, class: "" %></td>
+        <!--<td><%= image_tag producto.imagen, class: "" %></td>-->
+        <td><%= image_tag producto.imagen, height: 80  %></td>
         <td>
           <% if producto.marca %>
               <%= producto.marca.nombre %>

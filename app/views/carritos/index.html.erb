@@ -6,23 +6,19 @@
 <h1>Listing Carritos</h1>
 
 <table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th>Cliente</th>
-      <th>Total</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
-    <% @carritos.each do |carrito| %>
-      <tr>
-        <td><%= carrito.cliente_id %></td>
-        <td><%= carrito.total %></td>
-        <td class="btn-group"><%= link_to glyph(:eye_open) + ' Ver', carrito, class: 'btn btn-primary btn-sm'  %>
-        <%= link_to  glyph(:edit) +  ' Editar', edit_carrito_path(carrito), class: 'btn btn-warning btn-sm' %>
-        <%= link_to glyph(:trash) + 'borrar', carrito, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
-      </tr>
+    <div class="col-sm-3 col-md-4">
+  
+      <%=image_tag(producto.imagen.url) %>
+      <div class="caption">
+        <h3><%= producto.nombre %></h3>
+        <p><%= producto.descripcion %></p>
+        <p><a href="#" class="btn btn-primary" role="button">Me Gusta</a> <a href="#" class="btn btn-default" role="button">Ya no me gusta</a></p>
+        <%= link_to 'Agregar', agregar_producto_path(producto), method: "put", class:"btn btn-primary" %>
+      </div>
+
+  </div>
     <% end %>
   </tbody>
 </table>
