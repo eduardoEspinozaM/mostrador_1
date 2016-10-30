@@ -22,7 +22,7 @@
     <% @productos.each do |producto| %>
       <tr>
         <!--<td><%= image_tag producto.imagen, class: "" %></td>-->
-        <td><%= image_tag producto.imagen, height: 80  %></td>
+        <td><%= image_tag producto.imagen, class:"img-circle", height: 80  %></td>
         <td>
           <% if producto.marca %>
               <%= producto.marca.nombre %>
@@ -42,6 +42,7 @@
         <td class="btn-group"><%= link_to glyph(:eye_open) + ' Ver', producto, class: 'btn btn-primary btn-large' %>
           <%= link_to glyph(:edit) + ' Editar', edit_producto_path(producto), class: 'btn btn-success' %>
           <%= link_to glyph(:trash) +' Borrar', producto, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger ' %>
+          
         </td>
     <% end %>
   </tbody>

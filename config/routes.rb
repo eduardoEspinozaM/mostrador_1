@@ -1,8 +1,23 @@
 Rails.application.routes.draw do
+  get "tienda/show"
+  get "tienda/agregar"
 
+  resources :categorias
+  resources :categorias
+  resources :detalle_presupuestos
+  resources :presupuestos
   resources :tiendas
   resources :detalles
-  resources :productos
+  resources :agregar
+
+
+  resources :productos do
+    member do 
+      put 'agregar'
+      delete 'eliminar'
+    end
+  end
+
   resources :carritos
   resources :categoria
   resources :marcas

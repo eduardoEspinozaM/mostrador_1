@@ -28,8 +28,7 @@ class CategoriasController < ApplicationController
 
     respond_to do |format|
       if @categoria.save
-        format.html { redirect_to categorias_url, notice: 'Nueva Categoria creada' }
-        #format.html { redirect_to @categoria, notice: 'Categoria was successfully created.' }
+        format.html { redirect_to @categoria, notice: 'Categoria was successfully created.' }
         format.json { render :show, status: :created, location: @categoria }
       else
         format.html { render :new }
@@ -43,8 +42,7 @@ class CategoriasController < ApplicationController
   def update
     respond_to do |format|
       if @categoria.update(categoria_params)
-        format.html { redirect_to categorias_url, notice: 'Categoria Actualizada!' }
-        #format.html { redirect_to @categoria, notice: 'Categoria was successfully updated.' }
+        format.html { redirect_to @categoria, notice: 'Categoria was successfully updated.' }
         format.json { render :show, status: :ok, location: @categoria }
       else
         format.html { render :edit }
@@ -72,6 +70,5 @@ class CategoriasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def categoria_params
       params.require(:categoria).permit(:nombre)
-
     end
 end

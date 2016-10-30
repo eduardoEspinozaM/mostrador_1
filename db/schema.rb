@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029210643) do
+ActiveRecord::Schema.define(version: 20161030175022) do
 
   create_table "carritos", force: :cascade do |t|
     t.integer  "cliente_id"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20161029210643) do
   end
 
   create_table "categoria", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categorias", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,6 +50,12 @@ ActiveRecord::Schema.define(version: 20161029210643) do
   add_index "clientes", ["email"], name: "index_clientes_on_email", unique: true
   add_index "clientes", ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true
 
+  create_table "detalle_presupuestos", force: :cascade do |t|
+    t.integer  "cantidad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "detalles", force: :cascade do |t|
     t.integer  "carrito_id"
     t.integer  "producto_id"
@@ -54,6 +66,12 @@ ActiveRecord::Schema.define(version: 20161029210643) do
 
   create_table "marcas", force: :cascade do |t|
     t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "presupuestos", force: :cascade do |t|
+    t.datetime "fecha"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

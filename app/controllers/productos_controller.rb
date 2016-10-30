@@ -10,6 +10,7 @@ class ProductosController < ApplicationController
   # GET /productos/1
   # GET /productos/1.json
   def show
+    
   end
 
   # GET /productos/new
@@ -19,6 +20,36 @@ class ProductosController < ApplicationController
 
   # GET /productos/1/edit
   def edit
+  end
+
+  def agregar
+    # cookies.delete :presupuesto_id
+    if cookies[:presupuesto_id] # La cookies guarda el presupuesto id dentro de si mismo 
+
+      # Utilizar find para buscar por id almacenada en la cookies
+      @presupuesto = Presupuesto.find_by_id(cookies[:presupuesto_id])
+
+      # Aqui preguntamos si el producto no existe si es si crea un nuevo presupuestos
+        if @presupuesto.nil?
+          @presupuesto = Presupuesto.new(fecha: DateTime.now)
+        end
+    # Si no encuentra nada en la cookies realiza lo siguiente
+    else
+      @presupuesto = Presupuesto.new(fecha: DateTime.now)
+    end
+      
+    # Creamos una nueva variable para poder obtener los detalles que existe dentro de un 
+    # presupuesto que fue almacenado en la cookies 
+    detalle =  @presupuesto.detalle_presupuestos.where(producto_id: params[:id]).first
+    if detalle
+      # Utilizamos para ir agregando mas productos 
+      #detalle.cantidad = detalle.cantidad + 1
+      detalle.cantidad +=  1
+      # detalle.cantidad -=  1 #Eliminar detalles if detalle.cantidad == o detalle.destroy 
+    else
+      #Utilizar la relacion que existe entre presupuesto y detalle presupuesto 
+      @presupuesto.detalle_presupuestos.build(cantidad: 2 , producto_id: params[:id])
+    end
   end
 
   # POST /productos
