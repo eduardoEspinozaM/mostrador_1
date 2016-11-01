@@ -1,20 +1,16 @@
 
-<div class="row">
+
 <p id="notice"><%= notice %></p>
-  <div class="col-sm-6 col-md-4">
-    <% @productos.each do |producto| %>
-    <div class="thumbnail">
+<div class="col-sm-3 col-md-4">
+  <div>
+  <% @productos.each do |producto| %>
       <%= image_tag producto.imagen, height: 80  %>
       <div class="caption">
         <h3><%= producto.nombre %></h3>
         <p><%= producto.descripcion %></p>
       </div>
-      <div>
         <%= link_to glyph(:plus_sign, :shopping_cart) +'',new_carrito_path, class: 'btn btn-success ' %>
-       </div>
-    </div>
-    
-<% end %>
   </div>
 </div>
-<br>
+
+<%end%>
