@@ -12,22 +12,8 @@
   </thead>
 
   <tbody>
-    <% @productos.each do |producto| %>
-      <tr>
-        <td><%= image_tag producto.imagen, height: 80  %></td>
-        <td>
-          <% if producto.marca %>
-              <%= producto.marca.nombre %>
-          <%end%>
-       </td>
-        <td>
-            <% if producto.categoria %>
-                <%= producto.categoria.nombre %>
-            <%end%>
-        </td>
-        <td><%= producto.nombre %></td>
-        <td><%= producto.descripcion %></td>
-        <td><%= producto.precio %></td>
+    <% @carrito.each do |carrito| %>
+    
     <% end %>
   </tbody>
 </table>

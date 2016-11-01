@@ -1,5 +1,5 @@
-class DetallePresupuesto < ActiveRecord::Base
+class Detalle_presupuesto < ActiveRecord::Base
 	belongs_to :presupuesto
-	belongs_to :productos
+	belongs_to :producto
 
 end

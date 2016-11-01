@@ -4,7 +4,7 @@ class CarritosController < ApplicationController
   # GET /carritos
   # GET /carritos.json
   def index
-    @productos = Producto.all
+    @carrito = Carrito.all
   end
 
   # GET /carritos/1

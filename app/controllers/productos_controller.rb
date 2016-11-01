@@ -10,7 +10,6 @@ class ProductosController < ApplicationController
   # GET /productos/1
   # GET /productos/1.json
   def show
-    
   end
 
   # GET /productos/new
@@ -21,7 +20,6 @@ class ProductosController < ApplicationController
   # GET /productos/1/edit
   def edit
   end
-
   def agregar
     # cookies.delete :presupuesto_id
     if cookies[:presupuesto_id] # La cookies guarda el presupuesto id dentro de si mismo 
@@ -50,7 +48,24 @@ class ProductosController < ApplicationController
       #Utilizar la relacion que existe entre presupuesto y detalle presupuesto 
       @presupuesto.detalle_presupuestos.build(cantidad: 2 , producto_id: params[:id])
     end
-  end
+      # un ActiveRecord son lo que heredan de la base de datos find where etc
+    #Creamos la variable para obtener el nombre del producto para mostrar en el mensaje
+    producto = Producto.find(params[:id])
+    if @presupuesto.save!
+      # setear la cookies
+      cookies[:presupuesto_id] = @presupuesto.id
+
+      msg = "Se ha agregado #{producto.nombre} correctamente "
+      flash[:notice] =  msg
+      #flash.now  Esto se usa para render 
+    else
+      msg = "No se ha guardado #{producto.nombre} correctamente "
+      flash[:error] =  msg
+    end
+      #redirect_to presupuesto_path(@presupuesto)
+      redirect_to tienda_index_path
+  
+end
 
   # POST /productos
   # POST /productos.json

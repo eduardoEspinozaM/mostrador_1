@@ -14,11 +14,11 @@
   
   <div class="form-group has-error">
     <%= f.label :marca_id %><br>
-    <%= f.text_field :marca_id %>
+    <%= f.collection_select(:marca_id, Marca.all, :id, :nombre) %>
   </div>
   <div class="field">
-    <%= f.label :categoria %><br>
-    <%= f.number_field :categoria_id %>
+    <%= f.label :categoria_id %><br>
+    <%= f.collection_select(:categoria_id, Categoria.all, :id, :nombre) %>
   </div>
   <div class="field">
     <%= f.label :nombre %><br>
