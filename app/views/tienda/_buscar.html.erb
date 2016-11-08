@@ -1,0 +1,8 @@
+    <div class="navbar-form navbar-left">
+           <div class="form-group">
+                <%= form_tag productos_path, :method => 'get' do %>
+                        <%= text_field_tag :Buscar, params[:Buscar], :class=>"form-control", placeholder: "encontrar ahora!"  %>
+                    <%= submit_tag "Buscar" , :class=>"btn btn-default"%>
+                <% end %>
+              </div>
+      </div>

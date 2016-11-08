@@ -1,0 +1,6 @@
+ <%= @cant_productos_carrito %>
+
+<% @productos.each do |producto| %>
+	<div class="row-fluid"><%= render 'producto', producto: producto %></div>
+<% end %>
+

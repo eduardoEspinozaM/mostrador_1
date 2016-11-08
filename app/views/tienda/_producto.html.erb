@@ -1,0 +1,17 @@
+
+
+  <div class="col-sm-3 col-md-4">
+  
+      <%=image_tag(producto.imagen.url) %>
+      <div class="caption">
+        <h3><%= producto.nombre %></h3>
+        <p><%= producto.descripcion %></p>
+        <p> <%= link_to 'Agregar', agregar_producto_path(producto), method: "put", class:"btn btn-primary" %> </p>
+        
+      </div>
+
+  </div>
+
+
+
+

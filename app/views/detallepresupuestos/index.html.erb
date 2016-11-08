@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Detallepresupuestos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cantidad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detallepresupuestos.each do |detallepresupuesto| %>
+      <tr>
+        <td><%= detallepresupuesto.cantidad %></td>
+        <td><%= link_to 'Show', detallepresupuesto %></td>
+        <td><%= link_to 'Edit', edit_detallepresupuesto_path(detallepresupuesto) %></td>
+        <td><%= link_to 'Destroy', detallepresupuesto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detallepresupuesto', new_detallepresupuesto_path %>
