@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20161107224911) do
     t.string   "cantidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "producto_id"
+    t.integer  "presupuesto_id"
   end
 
   create_table "detalles", force: :cascade do |t|
