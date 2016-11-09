@@ -16,19 +16,6 @@ ActiveRecord::Schema.define(version: 20161107224911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "carritos", force: :cascade do |t|
-    t.integer  "cliente_id"
-    t.integer  "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "categoria", force: :cascade do |t|
-    t.string   "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categorias", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
@@ -52,12 +39,6 @@ ActiveRecord::Schema.define(version: 20161107224911) do
 
   add_index "clientes", ["email"], name: "index_clientes_on_email", unique: true, using: :btree
   add_index "clientes", ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true, using: :btree
-
-  create_table "detalle_presupuestos", force: :cascade do |t|
-    t.integer  "cantidad"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "detallepresupuestos", force: :cascade do |t|
     t.string   "cantidad"
