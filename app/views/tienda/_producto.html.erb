@@ -2,7 +2,7 @@
 
   <div class="col-sm-3 col-md-4">
   
-      <%=image_tag(producto.imagen.url) %>
+      <%=image_tag(producto.imagen.url, width: 300, height: 300) %>
       <div class="caption">
         <h3><%= producto.nombre %></h3>
         <p><%= producto.descripcion %></p>
