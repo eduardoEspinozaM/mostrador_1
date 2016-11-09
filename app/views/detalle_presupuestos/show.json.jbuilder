@@ -1,1 +1,0 @@
-json.partial! "detalle_presupuestos/detalle_presupuesto", detalle_presupuesto: @detalle_presupuesto

@@ -1,4 +1,4 @@
 class Presupuesto < ActiveRecord::Base
-	has_many :detalle_presupuestos, autosave: true, :dependent => :destroy
-	has_many :productos, through: :detalle_presupuestos
+	has_many :detallepresupuestos, autosave: true, dependent: :destroy
+	has_many :productos, through: :detallepresupuestos
 end

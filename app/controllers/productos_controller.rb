@@ -38,7 +38,7 @@ class ProductosController < ApplicationController
       
     # Creamos una nueva variable para poder obtener los detalles que existe dentro de un 
     # presupuesto que fue almacenado en la cookies 
-    detalle =  @presupuesto.detalle_presupuestos.where(producto_id: params[:id]).first
+    detalle =  @presupuesto.detallepresupuestos.where(producto_id: params[:id]).first
     if detalle
       # Utilizamos para ir agregando mas productos 
       #detalle.cantidad = detalle.cantidad + 1
@@ -46,7 +46,7 @@ class ProductosController < ApplicationController
       # detalle.cantidad -=  1 #Eliminar detalles if detalle.cantidad == o detalle.destroy 
     else
       #Utilizar la relacion que existe entre presupuesto y detalle presupuesto 
-      @presupuesto.detalle_presupuestos.build(cantidad: 2 , producto_id: params[:id])
+      @presupuesto.detallepresupuestos.build(cantidad: 2 , producto_id: params[:id])
     end
       # un ActiveRecord son lo que heredan de la base de datos find where etc
     #Creamos la variable para obtener el nombre del producto para mostrar en el mensaje

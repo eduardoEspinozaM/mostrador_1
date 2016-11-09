@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   get "tienda/show"
-  get "tienda/agregar"
+  get "tienda/index"
 
   resources :categorias
   resources :categorias
-  resources :detalle_presupuestos
+  resources :detallepresupuestos
   resources :presupuestos
-  resources :tiendas
+  resources :tienda
   resources :detalles
   resources :agregar
 
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'tiendas#index'
+   root 'tienda#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

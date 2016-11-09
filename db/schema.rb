@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030175022) do
+ActiveRecord::Schema.define(version: 20161107224911) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carritos", force: :cascade do |t|
     t.integer  "cliente_id"
@@ -47,11 +50,17 @@ ActiveRecord::Schema.define(version: 20161030175022) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "clientes", ["email"], name: "index_clientes_on_email", unique: true
-  add_index "clientes", ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true
+  add_index "clientes", ["email"], name: "index_clientes_on_email", unique: true, using: :btree
+  add_index "clientes", ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true, using: :btree
 
   create_table "detalle_presupuestos", force: :cascade do |t|
     t.integer  "cantidad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "detallepresupuestos", force: :cascade do |t|
+    t.string   "cantidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -107,7 +116,7 @@ ActiveRecord::Schema.define(version: 20161030175022) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
-  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
+  add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true, using: :btree
 
 end
