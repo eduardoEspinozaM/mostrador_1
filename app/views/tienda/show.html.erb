@@ -13,7 +13,7 @@
   <div class="media">
   <div class="media-left media-middle">
     <a href="#">
-      <%= image_tag detalle.producto.imagen.url %>
+      <%= image_tag detalle.producto.imagen.url, width: 100, height: 100%>
     </a>
   </div>
   <div class="media-body">
@@ -21,9 +21,8 @@
     <p><strong>Precio: </strong><%= detalle.producto.precio %></p>
     <p><strong>Cantidad: </strong><%= detalle.cantidad %></p>
     
-	<p><strong>Subtotal: </strong><%= subtotal = detalle.producto.precio * detalle.cantidad %><p>
+	   <!--<p><strong>Subtotal: </strong><%= subtotal = %>-->
 	<p><%= link_to 'Eliminar', eliminar_producto_path(detalle.producto), method: "delete", class:"btn" %></p>
-
   </div>
 </div>
 <hr>

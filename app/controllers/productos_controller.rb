@@ -53,7 +53,7 @@ class ProductosController < ApplicationController
     producto = Producto.find(params[:id])
     if @presupuesto.save!
       # setear la cookies
-      cookies[:presupuesto_id] = @presupuesto_id
+      cookies[:presupuesto_id] = @presupuesto.id
 
       msg = "Se ha agregado #{producto.nombre} correctamente "
       flash[:notice] =  msg
