@@ -62,8 +62,8 @@ class ProductosController < ApplicationController
       msg = "No se ha guardado #{producto.nombre} correctamente "
       flash[:error] =  msg
     end
-      #redirect_to presupuesto_path(@presupuesto)
-      redirect_to tienda_index_path
+      redirect_to presupuesto_path(@presupuesto)
+      #redirect_to tienda_index_path
   
 end
 
