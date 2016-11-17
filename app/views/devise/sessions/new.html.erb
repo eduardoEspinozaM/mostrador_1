@@ -1,0 +1,41 @@
+
+<div class="rev_slider">
+    <h2>WARE</h2>
+ </div>
+<div class="rev_slider3">
+    <h4>HOUSES </h4>
+    <p class="description">Sistema web de uso exclusivo de ventas</p>
+</div> 
+
+     <div class="wrapper">
+    <section class="form-signin">    
+      <h2 class="form-signin-heading">Información de Acceso</h2>
+     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                                     <div class="field">
+                                     
+                                      <%= f.email_field :email, autofocus: true,requiered: true, :class=>"form-control input-lg" ,placeholder: "Usuario"%>
+                                    </div>
+                                    <br>
+                                    <div class="field">
+                                   
+                                    <%= f.password_field :password, autocomplete: "off",requiered: true,:class=>"form-control input-lg", placeholder: "Contraseña" %>
+                                  </div>
+
+                                    <% if devise_mapping.rememberable? -%>
+                                      <div class="field">
+                                        <%= f.check_box :remember_me %>
+                                        <%= f.label "Recordar" %>
+                                      </div>
+                                    <% end -%>
+
+                                    <div class="actions">
+                                      <%= f.submit "Entrar", :class=>"btn btn-lg btn-primary btn-block" %>
+                                    </div>
+                                      <%= render "devise/shared/links" %>
+                                  <% end %>
+    </section>
+  </div>
+
+
+
+
