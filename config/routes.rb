@@ -1,54 +1,35 @@
 Rails.application.routes.draw do
-  get "tienda/show"
-  get "tienda/index"
+  get 'tienda/index'
+  get 'tienda/show'
+  get 'tienda/_contar_compra'
 
-  resources :categorias
-  resources :categorias
+  devise_for :usuarios
   resources :detallepresupuestos
   resources :presupuestos
-  resources :tienda
-  resources :detalles
-  resources :agregar
+  resources :categorias
+  resources :marcas
 
 
-  resources :productos do
-    member do 
+  resources :agregar 
+
+  #resources :categoria
+  resources :productos  do
+    member do
       put 'agregar'
       delete 'eliminar'
+      get 'sumar_carrito'
     end
   end
 
-  resources :carritos
-  resources :categoria
-  resources :marcas
- devise_for :usuarios,  controllers: { sessions: "usuarios/sessions", registrations: "usuarios/registrations", passwords: "usuarios/passwords"  }, :path_names => {:sign_in => 'login', :sign_up => 'registro', :sign_out => 'logout'}
-  as :usuario do
-    get 'sign_in' => 'usuarios/sessions#new', :as => :new_usuario_session_path
-    get 'sign_up' => 'usuarios/registrations#create', :as => :usuario_registration_path
-    delete 'sign_out' => 'usuarios/sessions#destroy', :as => :destroy_usuario_session_path
-    get 'new' => 'usuarios/sessions#destroy', :as => :new_usuario_password_path
-    
-  end 
-
-  devise_for :clientes,  controllers: { sessions: "clientes/sessions", registrations: "clientes/registrations", passwords: "clientes/passwords"  }, :path_names => {:sign_in => 'login', :sign_up => 'registro', :sign_out => 'logout'}
-  as :cliente do
-    get 'sign_in' => 'clientes/sessions#new', :as => :new_cliente_session_path
-    get 'sign_up' => 'clientes/registrations#create', :as => :cliente_registration_path
-    delete 'sign_out' => 'clientes/sessions#destroy', :as => :destroy_cliente_session_path
-    get 'new' => 'clientes/sessions#destroy', :as => :new_cliente_password_path
-    
-  end
-
-
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # See how all your routes lay out with "rake routes.".
 
   # You can have the root of your site routed with "root"
    root 'tienda#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+#
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

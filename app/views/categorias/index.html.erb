@@ -1,8 +1,13 @@
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Categorias</h1>
 
-<table>
+<h1>Lista de Categorias</h1>
+
+
+
+
+<table class="table table-condensed" >
   <thead>
     <tr>
       <th>Nombre</th>
@@ -12,16 +17,15 @@
 
   <tbody>
     <% @categorias.each do |categoria| %>
-      <tr>
-        <td><%= categoria.nombre %></td>
-        <td><%= link_to 'Show', categoria %></td>
-        <td><%= link_to 'Edit', edit_categoria_path(categoria) %></td>
-        <td><%= link_to 'Destroy', categoria, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr row=25px>
+        <td width="800"><%= categoria.nombre %></td>
+        <td width="10"><%= link_to 'Mostrar', categoria, class: "btn btn-success" %></td>
+        <td width="10"><%= link_to 'Editar', edit_categoria_path(categoria), remote: "true", class: "btn btn-success" %></td>
+        <td width="10"><%= link_to 'Eliminar', categoria, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-success" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Categoria', new_categoria_path %>
+<%= link_to 'Nueva Categoria', new_categoria_path, remote: "true", class: "btn btn-default"  %>

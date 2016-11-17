@@ -1,25 +1,17 @@
 class ProductosController < ApplicationController
+  skip_before_filter :authenticate_usuario!, only: [:agregar, :eliminar]
   before_action :set_producto, only: [:show, :edit, :update, :destroy]
 
   # GET /productos
   # GET /productos.json
   def index
-    @productos = Producto.all
+    #@productos = Producto.all
+    # Filtramos los productos para poder utilizarlo en nuestro buscador
+    @productos = Producto.where(["nombre LIKE ?","%#{params[:Buscar]}%"])
   end
 
-  # GET /productos/1
-  # GET /productos/1.json
-  def show
-  end
-
-  # GET /productos/new
-  def new
-    @producto = Producto.new
-  end
-
-  # GET /productos/1/edit
-  def edit
-  end
+  #metodo para agregar producto a nuestro carrito
+  # Crear un ajax para realizar eso.
   def agregar
     # cookies.delete :presupuesto_id
     if cookies[:presupuesto_id] # La cookies guarda el presupuesto id dentro de si mismo 
@@ -46,7 +38,7 @@ class ProductosController < ApplicationController
       # detalle.cantidad -=  1 #Eliminar detalles if detalle.cantidad == o detalle.destroy 
     else
       #Utilizar la relacion que existe entre presupuesto y detalle presupuesto 
-      @presupuesto.detallepresupuestos.build(cantidad:2, producto_id: params[:id])
+      @presupuesto.detallepresupuestos.build(cantidad: 2 , producto_id: params[:id])
     end
       # un ActiveRecord son lo que heredan de la base de datos find where etc
     #Creamos la variable para obtener el nombre del producto para mostrar en el mensaje
@@ -62,10 +54,61 @@ class ProductosController < ApplicationController
       msg = "No se ha guardado #{producto.nombre} correctamente "
       flash[:error] =  msg
     end
-      redirect_to presupuesto_path(@presupuesto)
-      #redirect_to tienda_index_path
+      #redirect_to presupuesto_path(@presupuesto)
+      redirect_to tienda_index_path
   
 end
+
+
+  def sumar_carrito
+  @sumar =  2
+
+  end
+
+  
+      
+def eliminar
+    @presupuesto = Presupuesto.find_by_id(cookies[:presupuesto_id])
+    detalle =  @presupuesto.detallepresupuestos.where(producto_id: params[:id]).first
+    if detalle
+      # Utilizamos para ir agregando mas productos 
+      #detalle.cantidad = detalle.cantidad + 1
+      detalle.cantidad -=  1
+      # detalle.cantidad -=  1 #Eliminar detalles if detalle.cantidad == o detalle.destroy 
+        if detalle.cantidad == 0 
+          detalle.destroy
+        end
+      end
+    # un ActiveRecord son lo que heredan de la base de datos find where etc
+    #Creamos la variable para obtener el nombre del producto para mostrar en el mensaje
+    producto = Producto.find(params[:id])
+    if @presupuesto.save!
+
+      msg = "Se ha eliminado #{producto.nombre} correctamente "
+      flash[:notice] =  msg
+      #flash.now  Esto se usa para render 
+    else
+      msg = "No se ha eliminado #{producto.nombre} correctamente "
+      flash[:error] =  msg
+    end
+      #redirect_to presupuesto_path(@presupuesto)
+      redirect_to tienda_index_path
+end
+
+  # GET /productos/1
+  # GET /productos/1.json
+  def show
+    
+  end
+
+  # GET /productos/new
+  def new
+    @producto = Producto.new
+  end
+
+  # GET /productos/1/edit
+  def edit
+  end
 
   # POST /productos
   # POST /productos.json
@@ -115,6 +158,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def producto_params
-      params.require(:producto).permit(:marca_id, :categoria_id, :nombre, :descripcion, :imagen, :precio)
+      params.require(:producto).permit(:nombre, :categoria_id, :foto, :cantidad, :precio, :vendedor, :descripcion, :imagen )
     end
 end

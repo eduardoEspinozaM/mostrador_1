@@ -18,7 +18,7 @@ class DetallepresupuestosControllerTest < ActionController::TestCase
 
   test "should create detallepresupuesto" do
     assert_difference('Detallepresupuesto.count') do
-      post :create, detallepresupuesto: { cantidad: @detallepresupuesto.cantidad, integer: @detallepresupuesto.integer }
+      post :create, detallepresupuesto: { cantidad: @detallepresupuesto.cantidad }
     end
 
     assert_redirected_to detallepresupuesto_path(assigns(:detallepresupuesto))
@@ -35,7 +35,7 @@ class DetallepresupuestosControllerTest < ActionController::TestCase
   end
 
   test "should update detallepresupuesto" do
-    patch :update, id: @detallepresupuesto, detallepresupuesto: { cantidad: @detallepresupuesto.cantidad, integer: @detallepresupuesto.integer }
+    patch :update, id: @detallepresupuesto, detallepresupuesto: { cantidad: @detallepresupuesto.cantidad }
     assert_redirected_to detallepresupuesto_path(assigns(:detallepresupuesto))
   end
 

@@ -7,6 +7,6 @@ skip_before_filter :authenticate_usuario!
   # VARIABLE INTANCIA SON con @ y se pueden usar en las vistas ---  y las que no es local
   def show
   	@presupuesto = Presupuesto.includes(detallepresupuestos:[:producto]).find(cookies[:presupuesto_id])
-  	
   end
 end
+

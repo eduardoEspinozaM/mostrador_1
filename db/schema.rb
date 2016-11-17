@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 20161107224911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categoria", force: :cascade do |t|
+    t.string   "nombre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categorias", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
@@ -41,9 +47,11 @@ ActiveRecord::Schema.define(version: 20161107224911) do
   add_index "clientes", ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true, using: :btree
 
   create_table "detallepresupuestos", force: :cascade do |t|
-    t.string   "cantidad"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "cantidad"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "producto_id"
+    t.integer  "presupuesto_id"
   end
 
   create_table "detalles", force: :cascade do |t|
@@ -52,6 +60,13 @@ ActiveRecord::Schema.define(version: 20161107224911) do
     t.integer  "cantidad"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "logins", force: :cascade do |t|
+    t.string   "usuario"
+    t.string   "contrasena"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "marcas", force: :cascade do |t|
@@ -67,12 +82,13 @@ ActiveRecord::Schema.define(version: 20161107224911) do
   end
 
   create_table "productos", force: :cascade do |t|
-    t.integer  "marca_id"
-    t.integer  "categoria_id"
     t.string   "nombre"
-    t.string   "descripcion"
-    t.string   "imagen"
+    t.integer  "categoria_id"
+    t.string   "foto"
+    t.integer  "cantidad"
     t.integer  "precio"
+    t.string   "vendedor"
+    t.text     "descripcion"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

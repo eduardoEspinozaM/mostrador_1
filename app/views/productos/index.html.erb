@@ -21,8 +21,8 @@
     
     <% @productos.each do |producto| %>
       <tr>
-        <!--<td><%= image_tag producto.imagen, class: "" %></td>-->
-        <td><%= image_tag producto.imagen, class:"", height: 80  %></td>
+       
+        <td><%= image_tag producto.foto, class:"", height: 80  %></td>
         <td>
           <% if producto.marca %>
               <%= producto.marca.nombre %>

@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: postgresql
-  host: localhost 
+  host: localhost
   username: postgres
   password: 12345
   pool: 5
@@ -26,4 +26,3 @@ test:
 production:
   <<: *default
   database: mostrador
-  adapter: postgresql

@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p><div class="form-group has-error">
-  <strong>Marca:</strong>
-  <%= @producto.marca_id %>
+<p>
+  <strong>Nombre:</strong>
+  <%= @producto.nombre %>
 </p>
-</div>
 
 <p>
   <strong>Categoria:</strong>
@@ -12,23 +11,30 @@
 </p>
 
 <p>
-  <strong>Nombre:</strong>
-  <%= @producto.nombre %>
+
+  <%= image_tag @producto.foto.url %>
+  
 </p>
 
 <p>
-  <strong>Descripcion:</strong>
-  <%= @producto.descripcion %>
-</p>
+  <strong>Cantidad:</strong>
+  <%= @producto.cantidad %>
 
-<p>
-  <strong>Imagen:</strong>
-  <%= image_tag @producto.imagen.url %>
 </p>
 
 <p>
   <strong>Precio:</strong>
   <%= @producto.precio %>
+</p>
+
+<p>
+  <strong>Vendedor:</strong>
+  <%= @producto.vendedor %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @producto.descripcion %>
 </p>
 
 <%= link_to 'Edit', edit_producto_path(@producto) %> |
