@@ -1,30 +1,36 @@
-<div class="col-sm-3 col-md-4">
-  
-<h3>Mostrar Presupuestos</H3>
-<p>
-  <strong>Fecha:</strong>
-  <%= @presupuesto.fecha %>
-</p>
-<hr>
 
-	<% @presupuesto.detallepresupuestos.each do |detalle| %>
+<p id="notice"><%= notice %></p>
 
-
-  <div>
-  <div class="media-left media-middle">
-    <a href="#">
-      <%= image_tag detalle.producto.foto.url %>
-    </a>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading"><%= detalle.producto.nombre %></h4>
-    <p><strong>Precio: </strong><%= detalle.producto.precio %></p>
-    <p><strong>Cantidad: </strong><%= detalle.cantidad %></p>
-	<p><strong>Subtotal: </strong><%= subtotal = detalle.producto.precio*detalle.cantidad %><p>
-	<p><%= link_to 'Eliminar', eliminar_producto_path(detalle.producto), method: "delete", class:"btn" %></p>
-
-  </div>
+<h1>Presupuesto</h1>
+<strong>Fecha:</strong><%= @presupuesto.fecha %>
+<td class="btn-group-vertical">
+  <table class="table table-striped table-hover ",class="panel panel-primary">
+  <div class="panel panel-primary">
+  <thead>
+    <tr>
+      <th>  Imagen </th>
+      <th>  Nombre</th>
+      <th>  Descripcion</th>
+      <th>  Precio</th>
+      <th>  Sub Total</th>
+     
+    </tr>
+</td>
+  </thead>
 </div>
-<hr>
-
-<% end %>
+  <tbody>
+    
+  <% @presupuesto.detallepresupuestos.each do |detalle| %>
+      <tr>
+      
+       <td><%= image_tag detalle.producto.foto, class:"", height: 80  %></td>
+        <td><%= detalle.producto.nombre %></td>
+        <td><%= detalle.producto.descripcion%> </td>
+        <td><%= detalle.producto.precio %></td>
+        <td><%= subtotal = detalle.producto.precio * detalle.producto.cantidad %></td>
+        <td><p><%= link_to 'Eliminar' , detalle, method: :delete, data:{ confirm: 'Estas seguro de borrar ' }%></p></td>
+        <td><p><%= link_to 'Eliminar', eliminar_producto_path(detalle.producto), method: "delete", class:"btn" %></p></td>
+    <% end %>
+  </tbody>
+</table>
+<br>

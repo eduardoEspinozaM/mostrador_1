@@ -13,40 +13,29 @@ class ProductosController < ApplicationController
   #metodo para agregar producto a nuestro carrito
   # Crear un ajax para realizar eso.
   def agregar
-    # cookies.delete :presupuesto_id
-    if cookies[:presupuesto_id] # La cookies guarda el presupuesto id dentro de si mismo 
-
-      # Utilizar find para buscar por id almacenada en la cookies
-      @presupuesto = Presupuesto.find_by_id(cookies[:presupuesto_id])
-
-      # Aqui preguntamos si el producto no existe si es si crea un nuevo presupuestos
-        if @presupuesto.nil?
-          @presupuesto = Presupuesto.new(fecha: DateTime.now)
-        end
-    # Si no encuentra nada en la cookies realiza lo siguiente
+    #cookies.delete :presupuesto_id
+    if cookies[:presupuesto_id]
+       presupuesto_id = cookies[:presupuesto_id]# La cookies guarda el presupuesto id dentro de si mismo 
+       @presupuesto = Presupuesto.find(presupuesto_id)
     else
-      @presupuesto = Presupuesto.new(fecha: DateTime.now)
+       @presupuesto = Presupuesto.new(fecha: DateTime.now)
     end
-      
-    # Creamos una nueva variable para poder obtener los detalles que existe dentro de un 
-    # presupuesto que fue almacenado en la cookies 
-    detalle =  @presupuesto.detallepresupuestos.where(producto_id: params[:id]).first
-    if detalle
-      # Utilizamos para ir agregando mas productos 
-      #detalle.cantidad = detalle.cantidad + 1
-      detalle.cantidad +=  1
-      # detalle.cantidad -=  1 #Eliminar detalles if detalle.cantidad == o detalle.destroy 
-    else
-      #Utilizar la relacion que existe entre presupuesto y detalle presupuesto 
-      @presupuesto.detallepresupuestos.build(cantidad: 2 , producto_id: params[:id])
-    end
-      # un ActiveRecord son lo que heredan de la base de datos find where etc
-    #Creamos la variable para obtener el nombre del producto para mostrar en el mensaje
+    puts params.inspect
     producto = Producto.find(params[:id])
-    if @presupuesto.save!
+    detalle =  @presupuesto.detallepresupuestos.where(producto_id: producto.id ).first
+    if detalle
+      detalle.cantidad +=1
+    else
+      @presupuesto.detallepresupuestos.build(cantidad: 1, producto_id: producto.id)
+    end
+     
+      puts detalle.inspect
+      puts @presupuesto.inspect
+
+    detalle.save if detalle
+    if @presupuesto.save
       # setear la cookies
       cookies[:presupuesto_id] = @presupuesto.id
-
       msg = "Se ha agregado #{producto.nombre} correctamente "
       flash[:notice] =  msg
       #flash.now  Esto se usa para render 
@@ -56,8 +45,7 @@ class ProductosController < ApplicationController
     end
       #redirect_to presupuesto_path(@presupuesto)
       redirect_to tienda_index_path
-  
-end
+  end
 
 
   def sumar_carrito
@@ -68,22 +56,17 @@ end
   
       
 def eliminar
-    @presupuesto = Presupuesto.find_by_id(cookies[:presupuesto_id])
+    @presupuesto = Presupuesto.find(presupuesto_id)
     detalle =  @presupuesto.detallepresupuestos.where(producto_id: params[:id]).first
-    if detalle
-      # Utilizamos para ir agregando mas productos 
-      #detalle.cantidad = detalle.cantidad + 1
+    if !detalle
+      cookies.delete :presupuesto_id
+    else
       detalle.cantidad -=  1
-      # detalle.cantidad -=  1 #Eliminar detalles if detalle.cantidad == o detalle.destroy 
-        if detalle.cantidad == 0 
-          detalle.destroy
-        end
-      end
-    # un ActiveRecord son lo que heredan de la base de datos find where etc
-    #Creamos la variable para obtener el nombre del producto para mostrar en el mensaje
-    producto = Producto.find(params[:id])
-    if @presupuesto.save!
-
+       detalle.destroy
+    end
+  producto = Producto.find(params[:id])
+    if @presupuesto.save
+       detalle.save
       msg = "Se ha eliminado #{producto.nombre} correctamente "
       flash[:notice] =  msg
       #flash.now  Esto se usa para render 
@@ -143,10 +126,12 @@ end
   # DELETE /productos/1
   # DELETE /productos/1.json
   def destroy
-    @producto.destroy
+    #cookies.delete :presupuesto_id
+    detalle.destroy
     respond_to do |format|
-      format.html { redirect_to productos_url, notice: 'Producto was successfully destroyed.' }
+      format.html { redirect_to tienda_index_path, notice: 'Estas Seguro de eliminar el presupuesto' }
       format.json { head :no_content }
+      redirect_to tienda_index_path
     end
   end
 
@@ -158,6 +143,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def producto_params
-      params.require(:producto).permit(:nombre, :categoria_id, :foto, :cantidad, :precio, :vendedor, :descripcion, :imagen )
+      params.require(:producto).permit(:nombre,:categoria_id, :foto, :cantidad, :precio, :descripcion)
     end
 end

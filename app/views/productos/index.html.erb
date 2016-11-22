@@ -7,7 +7,6 @@
   <thead>
     <tr>
       <th>  Imagen </th>
-      <th>  Marca</th>
       <th>  Categoria</th>
       <th>  Nombre</th>
       <th>  Descripcion</th>
@@ -23,16 +22,7 @@
       <tr>
        
         <td><%= image_tag producto.foto, class:"", height: 80  %></td>
-        <td>
-          <% if producto.marca %>
-              <%= producto.marca.nombre %>
-          <%end%>
-       </td>
-        <td>
-            <% if producto.categoria %>
-                <%= producto.categoria.nombre %>
-            <%end%>
-        </td>
+        <td><%= producto.categoria.nombre %></td>
         <td><%= producto.nombre %></td>
         <td><%= producto.descripcion%> </td>
         <td><%= producto.precio %></td>
