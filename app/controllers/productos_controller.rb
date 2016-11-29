@@ -44,40 +44,9 @@ class ProductosController < ApplicationController
       flash[:error] =  msg
     end
       #redirect_to presupuesto_path(@presupuesto)
-      redirect_to tienda_index_path
+      redirect_to tienda_show_path
   end
-
-
-  def sumar_carrito
-  @sumar =  2
-
-  end
-
-  
-      
-def eliminar
-    @presupuesto = Presupuesto.find(presupuesto_id)
-    detalle =  @presupuesto.detallepresupuestos.where(producto_id: params[:id]).first
-    if !detalle
-      cookies.delete :presupuesto_id
-    else
-      detalle.cantidad -=  1
-       detalle.destroy
-    end
-  producto = Producto.find(params[:id])
-    if @presupuesto.save
-       detalle.save
-      msg = "Se ha eliminado #{producto.nombre} correctamente "
-      flash[:notice] =  msg
-      #flash.now  Esto se usa para render 
-    else
-      msg = "No se ha eliminado #{producto.nombre} correctamente "
-      flash[:error] =  msg
-    end
-      #redirect_to presupuesto_path(@presupuesto)
-      redirect_to tienda_index_path
-end
-
+  #detalle.save  
   # GET /productos/1
   # GET /productos/1.json
   def show
@@ -129,10 +98,9 @@ end
     #cookies.delete :presupuesto_id
     detalle.destroy
     respond_to do |format|
-      format.html { redirect_to tienda_index_path, notice: 'Estas Seguro de eliminar el presupuesto' }
+      format.html { redirect_to tienda_show_path, notice: 'Estas Seguro de eliminar el presupuesto' }
       format.json { head :no_content }
-      redirect_to tienda_index_path
-    end
+     end
   end
 
   private

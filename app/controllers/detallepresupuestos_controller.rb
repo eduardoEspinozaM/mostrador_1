@@ -29,7 +29,7 @@ class DetallepresupuestosController < ApplicationController
 
     respond_to do |format|
       if @detallepresupuesto.save
-        format.html { redirect_to @detallepresupuesto, notice: 'Detallepresupuesto was successfully created.' }
+        format.html { redirect_to tienda_show_path, notice: 'Detallepresupuesto was successfully created.' }
         format.json { render :show, status: :created, location: @detallepresupuesto }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class DetallepresupuestosController < ApplicationController
   def destroy
     @detallepresupuesto.destroy
     respond_to do |format|
-      format.html { redirect_to detallepresupuestos_url, notice: 'Detallepresupuesto was successfully destroyed.' }
+      format.html { redirect_to tienda_show_url, notice: 'Detallepresupuesto was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

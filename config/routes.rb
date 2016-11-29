@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   get 'tienda/index'
   get 'tienda/show'
-  get 'tienda/_contar_compra'
+   post 'tienda/show'
 
+  
   devise_for :usuarios
   resources :detallepresupuestos
   resources :presupuestos
   resources :categorias
   resources :marcas
+  resources :tienda
 
 
   resources :agregar 
