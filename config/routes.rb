@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'tienda/index'
-  get 'tienda/show'
-   post 'tienda/show'
+
 
   
   devise_for :usuarios
@@ -10,6 +8,10 @@ Rails.application.routes.draw do
   resources :categorias
   resources :marcas
   resources :tienda
+  get 'tienda/index'
+  get 'tienda/show'
+  post 'tienda/show'
+
 
 
   resources :agregar 

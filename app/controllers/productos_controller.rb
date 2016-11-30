@@ -44,7 +44,7 @@ class ProductosController < ApplicationController
       flash[:error] =  msg
     end
       #redirect_to presupuesto_path(@presupuesto)
-      redirect_to tienda_show_path
+      redirect_to tienda_index_path
   end
   #detalle.save  
   # GET /productos/1

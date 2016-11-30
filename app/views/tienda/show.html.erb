@@ -22,17 +22,24 @@
   <tbody>
     
   <% @presupuesto.detallepresupuestos.each do |detalle| %>
-     
+   
       <tr>
-      <td><%= image_tag detalle.producto.foto, class:"", height: 80  %></td>
+        <td><%= image_tag detalle.producto.foto, class:"", height: 80  %></td>
         <td><%= detalle.producto.nombre %></td>
-       
-     
+        <td>
+          <%= form_for(detalle , url: '') do |f| %>
+              <%= f.label :cantidad %><br>
+              <%= f.text_field :cantidad %>
+              <%= f.submit 'actualizar' %> 
+          <%end%>
+        </td>
+         
         <td><%= detalle.producto.descripcion%> </td>
         <td><%= detalle.producto.precio %></td>
         <td><%= subtotal = detalle.producto.precio+detalle.producto.precio %></td>
         <td><p><%= link_to 'Eliminar' , detalle, method: :delete, data:{ confirm: 'Estas seguro de borrar '}%></p></td>
-    <% end %>
+      </tr>
+  <% end %>
   </tbody>
 </table>
 <br>
