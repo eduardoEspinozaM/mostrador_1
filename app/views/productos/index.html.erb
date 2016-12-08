@@ -29,9 +29,9 @@
 <sdiv>
 
 
-        <td class="btn-group"><%= link_to glyph(:eye_open) + ' Ver', producto, class: 'btn btn-primary btn-large' %>
-          <%= link_to glyph(:edit) + ' Editar', edit_producto_path(producto), class: 'btn btn-success' %>
-          <%= link_to glyph(:trash) +' Borrar', producto, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger ' %>
+        <td class="btn-group"><%= link_to glyph(:eye_open) + ' Ver', producto, class: 'btn btn-primary btn-xs' %>
+          <%= link_to glyph(:edit) + ' Editar', edit_producto_path(producto), class: 'btn btn-success btn-xs' %>
+          <%= link_to glyph(:trash) +' Borrar', producto, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
           
         </td>
     <% end %>

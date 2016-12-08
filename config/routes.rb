@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
+  get 'tienda/index'
+  get 'tienda/show'
+  get 'tienda/_contar_compra'
 
-
-  
   devise_for :usuarios
   resources :detallepresupuestos
   resources :presupuestos
   resources :categorias
   resources :marcas
-  resources :tienda
-  get 'tienda/index'
-  get 'tienda/show'
-  post 'tienda/show'
-
 
 
   resources :agregar 
@@ -20,6 +16,7 @@ Rails.application.routes.draw do
   resources :productos  do
     member do
       put 'agregar'
+      put 'sumarProducto'
       delete 'eliminar'
       get 'sumar_carrito'
     end
