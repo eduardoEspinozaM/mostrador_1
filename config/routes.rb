@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       put 'sumarProducto'
       delete 'eliminar'
       get 'sumar_carrito'
+      
     end
   end
 

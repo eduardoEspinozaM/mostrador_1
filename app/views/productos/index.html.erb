@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Productos</h1>
+<h1>
+<span class="label label-primary">Productos</span>
+</h1>
 <td class="btn-group-vertical">
   <table class="table table-striped table-hover ",class="panel panel-primary">
   <div class="panel panel-primary">
@@ -31,7 +33,8 @@
 
         <td class="btn-group"><%= link_to glyph(:eye_open) + ' Ver', producto, class: 'btn btn-primary btn-xs' %>
           <%= link_to glyph(:edit) + ' Editar', edit_producto_path(producto), class: 'btn btn-success btn-xs' %>
-          <%= link_to glyph(:trash) +' Borrar', producto, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+
+          <%= link_to glyph(:trash) +' Borrar', producto, method: :delete, data: { confirm: 'estas seguro que desea borrar?' }, class: 'btn btn-danger btn-xs' %>
           
         </td>
     <% end %>

@@ -1,8 +1,9 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Presupuesto</h1>
-<strong>Fecha:</strong><%= @presupuesto.fecha %>
+<h1>
+<span class="label label-primary">Presupuesto</span>
+</h1>
 <td class="btn-group-vertical">
   <table class="table table-striped table-hover ",class="panel panel-primary">
   <div class="panel panel-primary">
@@ -35,7 +36,7 @@
           <div class="btn-group">
         <%= link_to 'Agregar', sumarProducto_producto_path(detalle.producto), method: "put", class:"btn btn-primary btn-xs" %>
         <%= link_to 'Descontar', eliminar_producto_path(detalle.producto), method: "delete", class:"btn btn-warning btn-xs" %>
-          <%= link_to 'Eliminar' , detalle, method: :delete, data:{ confirm: 'Estas seguro de borrar ' }, class:"btn btn-danger btn-xs" %>
+          <%= link_to 'borrar' , detalle, method: :delete, data:{ confirm: 'Estas seguro de borrar ' }, class:"btn btn-danger btn-xs" %>
           </div>
       </td>
     <% end %>
