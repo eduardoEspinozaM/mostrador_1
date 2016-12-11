@@ -36,7 +36,9 @@
           <div class="btn-group">
         <%= link_to 'Agregar', sumarProducto_producto_path(detalle.producto), method: "put", class:"btn btn-primary btn-xs" %>
         <%= link_to 'Descontar', eliminar_producto_path(detalle.producto), method: "delete", class:"btn btn-warning btn-xs" %>
-          <%= link_to 'borrar' , detalle, method: :delete, data:{ confirm: 'Estas seguro de borrar ' }, class:"btn btn-danger btn-xs" %>
+          <%= link_to 'borrar' , detalle, method: :delete, data:{ confirm: 'Estas seguro de borrar ' }, class:"btn btn-danger btn-xs" 
+           %>
+          
           </div>
       </td>
     <% end %>
