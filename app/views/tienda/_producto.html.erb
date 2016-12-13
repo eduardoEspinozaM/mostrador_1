@@ -1,14 +1,16 @@
 
 
    <div class="col-sm-3 col-md-4">
-  
-      <%=image_tag(producto.foto.url, width: 200, height: 200) %>
-      <div class="caption">
+
+
+
+      <%=link_to (image_tag(producto.foto.url, width: 200, height: 200, )), producto.foto.url %>
+        <div class="caption">
         <h3><%= producto.nombre %></h3>
         <p><strong>Descripcion: </strong><%= producto.descripcion %></p>
         <p><strong>Precio: </strong><%= producto.precio %></p>
 
-      <%= link_to (image_tag 'http://localhost:3000/carrito.png', width:"20%", height:"40px"), agregar_producto_path(producto), method: "put" %>
+      <%= link_to (image_tag 'http://localhost:3000/carrito2.png', width:"20%", height:"40px"), agregar_producto_path(producto), method: "put" %>
       </div>
 
   </div>
