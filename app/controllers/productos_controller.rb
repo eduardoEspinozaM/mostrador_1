@@ -13,7 +13,7 @@ class ProductosController < ApplicationController
   #metodo para agregar producto a nuestro carrito
   # Crear un ajax para realizar eso.
   def agregar
-    #cookies.delete :presupuesto_id
+    cookies.delete :presupuesto_id
     if cookies[:presupuesto_id]
        presupuesto_id = cookies[:presupuesto_id]# La cookies guarda el presupuesto id dentro de si mismo 
        @presupuesto = Presupuesto.find(presupuesto_id)
@@ -162,11 +162,10 @@ end
   # DELETE /productos/1.json
   def destroy
     #cookies.delete :presupuesto_id
-    detalle.destroy
+    @producto.destroy
     respond_to do |format|
-      format.html { redirect_to tienda_index_path, notice: 'Estas Seguro de eliminar el presupuesto' }
+      format.html { redirect_to producto_url, notice: 'Seguro que quiere eliminar el producto' }
       format.json { head :no_content }
-      redirect_to tienda_index_path
     end
   end
 
