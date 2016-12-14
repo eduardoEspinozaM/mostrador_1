@@ -9,16 +9,18 @@
     <tr>
       <th>Nombre</th>
       <th colspan=""></th>
-    </tr>
+    
   </thead>
+    </tr>
 
   <tbody>
     <% @marcas.each do |marca| %>
       <tr>
         <td><%= marca.nombre %></td>
-        <td class="btn-group"><%= link_to glyph(:eye_open) + ' Ver', marca, class: 'btn btn-primary btn-sm' %>
-          <%= link_to glyph(:edit) + ' Editar', edit_marca_path(marca), class: 'btn btn-warning btn-sm' %>
-          <%= link_to glyph(:trash) +' Borrar', marca, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+
+        <td class="btn-group"><%= link_to glyph(:eye_open) + ' Ver', marca, class: 'btn btn-primary btn-xs' %>
+          <%= link_to glyph(:edit) + ' Editar', edit_marca_path(marca), class: 'btn btn-warning btn-xs' %>
+          <%= link_to glyph(:trash) +' Borrar', marca, method: :delete, data: { confirm: 'Estás seguro?' }, class: 'btn btn-danger btn-xs' %>
         </td>
       </tr>
     <% end %>
@@ -27,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Marca', new_marca_path %>
+<%= link_to 'Nueva Marca', new_marca_path, class: "glyphicon glyphicon-plus-sign" %>

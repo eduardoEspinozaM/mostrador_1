@@ -15,7 +15,7 @@
     <%= f.label :nombre %><br>
     <%= f.text_field :nombre %>
   </div>
-  <div class="field">
+  <div class="field", class="btn btn-default">
     <%= f.label :categoria_id %><br>
 <%= f.collection_select(:categoria_id, Categoria.all, :id, :nombre) %>
  </div>
@@ -23,7 +23,7 @@
     <%= f.label :foto %><br>
     <%= f.file_field :foto %>
   </div>
-  <div class="field">
+  <div class="field" class="label label-primary">
     <%= f.label :cantidad %><br>
     <%= f.number_field :cantidad %>
   </div>
@@ -37,7 +37,7 @@
     <%= f.text_area :descripcion %>
   </div>
   <div class="actions">
-    <%= f.submit "Guardar"  %>
+    <%= f.submit "Guardar", class: "glyphicon glyphicon-floppy-open" %>
   </div>
  
 <% end %>

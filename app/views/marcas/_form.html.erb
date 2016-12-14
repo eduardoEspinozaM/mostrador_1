@@ -1,7 +1,7 @@
 <%= form_for(@marca) do |f| %>
   <% if @marca.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@marca.errors.count, "error") %> prohibited this marca from being saved:</h2>
+      <h2><%= pluralize(@marca.errors.count, "error") %> Prohibido esta marca de ser guardado:</h2>
 
       <ul>
       <% @marca.errors.full_messages.each do |message| %>

@@ -20,11 +20,13 @@
   <tbody>
     <% @categorias.each do |categoria| %>
       <tr row=25px>
-        <%= categoria.nombre %>
-        <%= link_to 'Mostrar', categoria, class: "btn btn-primary btn-xs" %>
+        <td> <%= categoria.nombre %> 
+         <%= link_to 'Mostrar', categoria, class: "btn btn-primary btn-xs" %>
         <%= link_to 'Editar', edit_categoria_path(categoria), remote: "true", class: "btn btn-success btn-xs" %>
       <%= link_to 'Eliminar', categoria, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
       </tr>
+    </td> 
+
     <% end %>
   </tbody>
 </table>
