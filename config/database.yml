@@ -13,7 +13,7 @@ default: &default
 development:
   <<: *default
   username: root
-  password: admin
+  password: 12345
   database: mostrador
   host: 127.0.0.1
   adapter: mysql2
